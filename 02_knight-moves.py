@@ -85,10 +85,13 @@ def search_random_path(src, dest):
 def search_short_path(src, dest):
     short_path = list(range(100))
 
-    for i in range(200):
+    for i in range(300):
        new_path = search_random_path(src, dest)
        if len(new_path) < len(short_path):
-           short_path = new_path 
+           short_path = new_path
+
+           if len(short_path) == 2:
+               break 
 
     return short_path
 
@@ -98,13 +101,19 @@ def sandbox(src):
         print(index)
 
 src = 0
-dest = 63
+dest = 1
 
 #sandbox(src)
 #print( make_move(src, 'dl') )
 
 #print(search_random_path(src, dest))
 
-print(search_short_path(src, dest))
+#print(search_short_path(src, dest))
 
+def solution(src, dest):
+    short_path = search_short_path(src, dest)
+    return len(short_path) - 1
+
+
+print(solution(src, dest))
 
