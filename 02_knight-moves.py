@@ -18,6 +18,7 @@ moves = { 'ul' : (-2, -1),
 
           'dl' : (2, -1),
           'ld' : (1, -2),
+          
           'lu' : (-1, -2)
         }
 
@@ -25,11 +26,18 @@ def make_move(src, move):
     coords = index_2_coords(src)
     y, x = coords
 
+    #print(coords)
+
     delta = moves[move]
     delta_y, delta_x = delta
 
+    #print(delta)
+
     new_y = y + delta_y
     new_x = x + delta_x
+
+    if new_y <= 0 or new_x <= 0:
+        return -1
 
     dest = coords_2_index( (new_y, new_x) )
 
@@ -86,6 +94,7 @@ src = 0
 dest = 1
 
 sandbox(src)
+#print( make_move(src, 'dl') )
 
 #print(search_random_path(src, dest))
 
