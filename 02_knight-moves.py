@@ -15,6 +15,7 @@ moves = { 'ul' : (-2, -1),
           'ru' : (-1, 2),
           'rd' : (1, 2),
           'dr' : (2, 1),
+
           'dl' : (2, -1),
           'ld' : (1, -2),
           'lu' : (-1, -2)
@@ -39,8 +40,55 @@ def make_move(src, move):
         return dest
 
 
-src = 20
-print(make_move(src, 'lu'))
+import random
 
+def search_random_path(src, dest):
+
+    keys = list(moves.keys())
+    path = [src]
+    
+    while dest not in path:
+        # select random move
+        random_index = random.randint(0,7) 
+        move = keys[random_index] 
+
+        new_index = make_move(src, move)
+
+        if new_index >= 0:
+
+            #if new_index not in path:
+            path.append(new_index)
+            src = new_index
+            #print(path)
+                
+            if new_index == dest:
+                break
+            
+    
+    return path
+
+def search_short_path(src, dest):
+    short_path = list(range(100))
+
+    for i in range(100):
+       new_path = search_random_path(src, dest)
+       if len(new_path) < len(short_path):
+           short_path = new_path 
+
+    return short_path
+
+def sandbox(src):
+    for move in moves.keys():
+        index = make_move(src, move)
+        print(index)
+
+src = 0
+dest = 1
+
+sandbox(src)
+
+#print(search_random_path(src, dest))
+
+#print(search_short_path(src, dest))
 
 
