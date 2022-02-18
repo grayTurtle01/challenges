@@ -36,7 +36,7 @@ def make_move(src, move):
     new_y = y + delta_y
     new_x = x + delta_x
 
-    if new_y <= 0 or new_x <= 0:
+    if new_y <= 0 or new_x <= 0 or new_y > 8 or new_x > 8:
         return -1
 
     dest = coords_2_index( (new_y, new_x) )
@@ -90,8 +90,8 @@ def sandbox(src):
         index = make_move(src, move)
         print(index)
 
-src = 0
-dest = 1
+src = 22
+dest = 63
 
 sandbox(src)
 #print( make_move(src, 'dl') )
