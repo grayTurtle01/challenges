@@ -1,3 +1,10 @@
+# Challenge-2: Find the lowest steps between two board-chess-squares
+#              - Moving like a knight
+#              - Each squares has an index from 0 to 63:  0 <= i <= 63 
+
+# solution(src, dest) --> Steps[int]    
+# Examples: (0, 1) --> 3,  (19, 36) --> 1
+
 def index_2_coords(index):
     y = (index // 8) + 1
     x = (index % 8) + 1
@@ -78,7 +85,7 @@ def search_random_path(src, dest):
 def search_short_path(src, dest):
     short_path = list(range(100))
 
-    for i in range(100):
+    for i in range(200):
        new_path = search_random_path(src, dest)
        if len(new_path) < len(short_path):
            short_path = new_path 
@@ -90,14 +97,14 @@ def sandbox(src):
         index = make_move(src, move)
         print(index)
 
-src = 22
+src = 0
 dest = 63
 
-sandbox(src)
+#sandbox(src)
 #print( make_move(src, 'dl') )
 
 #print(search_random_path(src, dest))
 
-#print(search_short_path(src, dest))
+print(search_short_path(src, dest))
 
 
